@@ -27,3 +27,9 @@ class UserLogin(BaseModel):
 class Token(BaseModel):
     access_token: str
     token_type: str
+from pydantic import BaseModel, EmailStr
+
+class UserUpdate(BaseModel):
+    user_name: str
+    user_email: EmailStr
+    user_phone: str

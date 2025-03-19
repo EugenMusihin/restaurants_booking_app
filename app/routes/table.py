@@ -34,6 +34,7 @@ async def get_tables(db: AsyncSession = Depends(get_db)):
     if not tables:
         return []
     return [TableResponse.model_validate(table) for table in tables]
+
 @router.get("/floor/{floor_id}", response_model=List[TableResponse])
 async def get_tables_by_floor(floor_id: int, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(Table).where(Table.floor_id == floor_id))

@@ -12,7 +12,7 @@ router = APIRouter(
 )
 
 @router.post("/post")
-async def add_specific_userDiscounts(new_floor: FloorCreate, session: AsyncSession = Depends(get_db)):
+async def add_floor(new_floor: FloorCreate, session: AsyncSession = Depends(get_db)):
     stmt = insert(Floor).values(**new_floor.model_dump())
     await session.execute(stmt)
     await session.commit()
